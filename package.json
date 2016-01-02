@@ -6,6 +6,10 @@
   "scripts": {
     "start": "node index.js"
   },
+    "dependencies": {
+    "ejs": "^2.3.1",
+    "express": "~4.9.x"
+  },
   "engines": {
     "node": "4.X"
   },
