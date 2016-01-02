@@ -1,0 +1,27 @@
+{
+  "name": "freecc-timestamp-microservice",
+  "version": "0.0.1",
+  "description": "Converte date to unix and natural standards",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "4.X"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dMcGaa/TimeStamp-Microservice.git"
+  },
+
+  "keywords": [
+    "unix",
+    "timestamp"
+  ],
+  "author": "dMcGaa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dMcGaa/TimeStamp-Microservice/issues"
+  },
+  "homepage": "https://github.com/dMcGaa/TimeStamp-Microservice#readme"
+}
