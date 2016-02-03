@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>NodeJS Simple App</title>
-
-    <!-- CSS -->
-    <!-- load bootstrap and custom stylesheet -->
-    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="stylesheets/main.css">
-
+    <% include partials/head.ejs %>
 </head>
-<body>
 
-<div class="container">
-    <div class="jumbotron">
-        <h1 style = "font-size: 210%;">This Is Heroku Minimum!</h1>
-        <h2>Made using NodeJS, Express, EJS</h2>
-        <p><a href="https://github.com/dMcGaa/min-nodejs-heroku">GitHub</a></p>
-        <p style = "font-size: 80%;"><i>updated 2016-01-02</i></p>
+<body>
+    <header>
+        <% include partials/header.ejs %>
+    </header>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 style="font-size: 210%;">Pintacular</h1>
+            <h3><a href = "/">One</a></h3>
+            <h3><a href = "/">Two</a></h3>
+            <h3><a href = "/">Three</a></h3>
+        </div>
     </div>
-</div>
-    
+
+    <footer>
+        <% include partials/footer.ejs %>
+    </footer>
+
 </body>
+
 </html>

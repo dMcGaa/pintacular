@@ -1,21 +1,24 @@
 {
-  "name": "freecc-timestamp-microservice",
+  "name": "pintacular",
   "version": "0.0.1",
-  "description": "Converte date to unix and natural standards",
+  "description": "Pinterest clone",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
     "dependencies": {
     "ejs": "^2.3.1",
-    "express": "~4.9.x"
+    "express": "~4.9.x",
+    "mongodb": "^2.x",
+    "dotenv": "^1.x",
+    "socket.io":"^1.x"
   },
   "engines": {
     "node": "4.X"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dMcGaa/TimeStamp-Microservice.git"
+    "url": "https://github.com/dMcGaa/pintacular.git"
   },
 
   "keywords": [
@@ -25,7 +28,7 @@
   "author": "dMcGaa",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dMcGaa/TimeStamp-Microservice/issues"
+    "url": "https://github.com/dMcGaa/pintacular/issues"
   },
-  "homepage": "https://github.com/dMcGaa/TimeStamp-Microservice#readme"
+  "homepage": "https://github.com/dMcGaa/pintacular#readme"
 }
