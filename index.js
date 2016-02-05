@@ -1,8 +1,17 @@
 require('dotenv').load(); //load .env variables as soon as possible!
 var express = require('express');
 var app = express();
-var session = require('express-session')
 
+//MongoDB
+var MongoClient = require('mongodb').MongoClient,
+  test = require('assert');
+var ObjectId = require('mongodb').ObjectId;
+var userName = process.env.MONGOLAB_USER || "null";
+var userPw = process.env.MONGOLAB_UPW || "null";
+var dbUrl = 'mongodb://' + userName + ":" + userPw + "@" + "ds039125.mongolab.com:39125/mylonelydb";
+var dbCollection = "pintacular";
+
+var session = require('express-session')
 var Grant = require('grant-express');
 
 var config = {
@@ -18,7 +27,11 @@ var config = {
     // "callback": "/twit_callback"//"/handle_twitter_callback"
   }
 }
-console.log(JSON.stringify(config.server));
+
+var dbConn;
+mongoConnect();
+
+// console.log(JSON.stringify(config.server));
 // console.log(process.env.PORT);
 // console.log(process.env.TWITTER_KEY);
 // console.log(process.env.TWITTER_SECRET);
@@ -45,7 +58,8 @@ app.get('/', function(request, response) {
 
 app.get('/handle_twitter_callback', function (req, res) {
   console.log(req.query);
-  res.send(JSON.stringify(req.query, null, 2));
+  res.render('pages/home');
+  // res.send(JSON.stringify(req.query, null, 2));
 })
 
 app.get('/twit_callback', function (req, res) {
@@ -55,3 +69,27 @@ app.get('/twit_callback', function (req, res) {
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
+
+
+// Connect using MongoClient
+function mongoConnect() {
+  MongoClient.connect(dbUrl, function(err, db) {
+    test.equal(null, err);
+    dbConn = db; //mongodb connection instance
+    // db.close();  //no need to close, let application termination handle this
+  });
+}
+
+function mongoAdd(addVar, callback) {
+  var testVar = {
+    item: addVar.vName,
+    qty: addVar.vQty
+  }
+
+  var collection = dbConn.collection(dbCollection);
+  //insert to collection
+  console.log("adding " + JSON.stringify(testVar));
+  collection.insert(testVar);
+  //catch WriteConcernException
+  callback();
+}
