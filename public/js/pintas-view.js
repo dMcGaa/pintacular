@@ -8,11 +8,16 @@ function viewAllPintas() {
         $("#pinta-list").html("");
         for (var i = 0; i < data.length; i++) {
             console.log(data[i]);
-            var pintaItem = document.createElement('a');
-            pintaItem.href = data[i].pinta_html;
+            var pintaItem = document.createElement("div");
             pintaItem.innerHTML = data[i].pinta_name;
+            
+            var pintaImg = document.createElement("img");
+            pintaImg.src = data[i].pinta_html;
+            pintaImg.className = "pinta-img-link";
+            
+            $("#pinta-list").append(pintaImg);
             $("#pinta-list").append(pintaItem);
-            $("#pinta-list").append("<br>");
+            // $("#pinta-list").append("<br>");
         }
     })
 
