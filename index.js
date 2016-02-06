@@ -88,6 +88,13 @@ app.get('/view-pintas', function (req, res) {
   });
 })
 
+app.get('/view-pintas-latest', function (req, res) {
+  mongoFindLatestPintas(function(tempData) {
+    console.log("done loading");
+    res.send(tempData);
+  });
+})
+
 app.get('/handle_twitter_callback', function (req, res) {
   console.log(req.query);
   res.render('pages/login');
@@ -147,6 +154,20 @@ function mongoFindAllPintas(callback) {
       $exists: true
     }
   }).toArray(function(err, docs) {
+    if (err) throw err;
+    console.log(JSON.stringify(docs));
+    callback(docs); //callback once response is obtained (Asynchronous)
+  })
+}
+
+function mongoFindLatestPintas(callback) {
+  var collection = dbConn.collection(dbCollection);
+  //read from collection
+  collection.find({
+    pinta_name: {
+      $exists: true
+    }
+  }).limit(1).sort({$natural:-1}).toArray(function(err, docs) {
     if (err) throw err;
     console.log(JSON.stringify(docs));
     callback(docs); //callback once response is obtained (Asynchronous)
