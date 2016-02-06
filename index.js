@@ -59,7 +59,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }))
 
-app.post("/add-new-pinta", function(req, res) {
+app.post("/pinta-new-add", function(req, res) {
   var addPinta = {
     pintaUser: req.body.userName,
     pintaName: req.body.pName,
@@ -71,6 +71,14 @@ app.post("/add-new-pinta", function(req, res) {
   mongoAddPinta(addPinta, function(){
     res.render('pages/new-pinta');
   })
+})
+
+app.post("/pintas-recent-get", function(req, res) {
+  console.log("retrieving...");
+  // var reqPoll = req.body.pollNumber;
+  mongoFindLatestPintas(2, function(foundPintas) {
+    res.send(foundPintas);
+  });
 })
 
 app.get('/', function(request, response) {
@@ -89,7 +97,7 @@ app.get('/view-pintas', function (req, res) {
 })
 
 app.get('/view-pintas-latest', function (req, res) {
-  mongoFindLatestPintas(function(tempData) {
+  mongoFindLatestPintas(2, function(tempData) {
     console.log("done loading");
     res.send(tempData);
   });
@@ -160,14 +168,14 @@ function mongoFindAllPintas(callback) {
   })
 }
 
-function mongoFindLatestPintas(callback) {
+function mongoFindLatestPintas(findNum, callback) {
   var collection = dbConn.collection(dbCollection);
   //read from collection
   collection.find({
     pinta_name: {
       $exists: true
     }
-  }).limit(1).sort({$natural:-1}).toArray(function(err, docs) {
+  }).limit(findNum).sort({$natural:-1}).toArray(function(err, docs) {
     if (err) throw err;
     console.log(JSON.stringify(docs));
     callback(docs); //callback once response is obtained (Asynchronous)
