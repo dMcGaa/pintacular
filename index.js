@@ -68,7 +68,9 @@ app.post("/add-new-pinta", function(req, res) {
   };
   // console.log(JSON.stringify(req.body));
   console.log("adding pinta post " + JSON.stringify(addPinta));
-  res.render('pages/new-pinta');
+  mongoAddPinta(addPinta, function(){
+    res.render('pages/new-pinta');
+  })
 })
 
 app.get('/', function(request, response) {
@@ -77,6 +79,13 @@ app.get('/', function(request, response) {
 
 app.get('/new-pinta', function (req, res) {
   res.render('pages/new-pinta');
+})
+
+app.get('/view-pintas', function (req, res) {
+  mongoFindAllPintas(function(tempData) {
+    console.log("done loading");
+    res.send(tempData);
+  });
 })
 
 app.get('/handle_twitter_callback', function (req, res) {
@@ -99,16 +108,47 @@ function mongoConnect() {
   });
 }
 
-function mongoAdd(addVar, callback) {
-  var testVar = {
-    item: addVar.vName,
-    qty: addVar.vQty
+function mongoAddPinta(addPinta, callback) {
+  var pintaDB = {
+    pinta_user: addPinta.pintaUser,
+    pinta_name: addPinta.pintaName,
+    pinta_html: addPinta.pintaHtml,
+    pinta_likes: addPinta.pintaLikes
   }
-
+  // console.log(dbCollection);
   var collection = dbConn.collection(dbCollection);
   //insert to collection
-  console.log("adding " + JSON.stringify(testVar));
-  collection.insert(testVar);
+  console.log("adding " + JSON.stringify(pintaDB));
+  collection.insert(pintaDB);
   //catch WriteConcernException
   callback();
+}
+
+function mongoFindUserPintas(userName, callback) {
+  var collection = dbConn.collection(dbCollection);
+  //read from collection
+  collection.find({
+    pinta_name: {
+      $exists: true
+    },
+    pinta_user: userName
+  }).toArray(function(err, docs) {
+    if (err) throw err;
+    console.log(JSON.stringify(docs));
+    callback(); //callback once response is obtained (Asynchronous)
+  })
+}
+
+function mongoFindAllPintas(callback) {
+  var collection = dbConn.collection(dbCollection);
+  //read from collection
+  collection.find({
+    pinta_name: {
+      $exists: true
+    }
+  }).toArray(function(err, docs) {
+    if (err) throw err;
+    console.log(JSON.stringify(docs));
+    callback(docs); //callback once response is obtained (Asynchronous)
+  })
 }
