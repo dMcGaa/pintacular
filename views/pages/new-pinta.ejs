@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/head.ejs %>
+</head>
+
+<title>Pintacular - New Pinta</title>
+
+<body>
+    <header>
+        <% include partials/header.ejs %>
+    </header>
+
+    <div class="container">
+        <div class="jumbotron">
+            <form id="pinta-new" method="post" action="/add-new-pinta">
+                <input type="text" name="userName" style="display:none;">
+                Name:
+                <br>
+                <input type="text" name="pName" placeholder="Post Title">
+                <br> HTML:
+                <br>
+                <div id="pinta-options">
+                    <input type="text" name="pHtml" placeholder="Image HTML">
+                    <br>
+                </div>
+                <input type="submit" style="color:black;" value="Submit">
+                <br>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <% include partials/footer.ejs %>
+    </footer>
+
+</body>
+
+</html>

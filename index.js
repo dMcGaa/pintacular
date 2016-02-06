@@ -14,17 +14,19 @@ var dbCollection = "pintacular";
 var session = require('express-session')
 var Grant = require('grant-express');
 
+var bodyParser = require('body-parser');
+
 var config = {
   "server": {
     "protocol": "http",
     "host": "fullstack-basejumps-2016-01-01-dmcgaa.c9users.io" //without port
+    // "host": "pintacular.herokuapp.com"
     //"callback": "/handle_twitter_callback"
   },
   "twitter": {
     "key": process.env.TWITTER_KEY,
     "secret": process.env.TWITTER_SECRET,
     "callback": "/handle_twitter_callback"
-    // "callback": "/twit_callback"//"/handle_twitter_callback"
   }
 }
 
@@ -52,18 +54,35 @@ app.use(new Grant(config));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
+
+app.post("/add-new-pinta", function(req, res) {
+  var addPinta = {
+    pintaUser: req.body.userName,
+    pintaName: req.body.pName,
+    pintaHtml: req.body.pHtml,
+    pintaLikes: 0
+  };
+  // console.log(JSON.stringify(req.body));
+  console.log("adding pinta post " + JSON.stringify(addPinta));
+  res.render('pages/new-pinta');
+})
+
 app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/handle_twitter_callback', function (req, res) {
-  console.log(req.query);
-  res.render('pages/home');
-  // res.send(JSON.stringify(req.query, null, 2));
+app.get('/new-pinta', function (req, res) {
+  res.render('pages/new-pinta');
 })
 
-app.get('/twit_callback', function (req, res) {
+app.get('/handle_twitter_callback', function (req, res) {
+  console.log(req.query);
   res.render('pages/login');
+  // res.send(JSON.stringify(req.query, null, 2));
 })
 
 app.listen(app.get('port'), function() {
