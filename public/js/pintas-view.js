@@ -10,12 +10,19 @@ function viewAllPintas() {
             console.log(data[i]);
             var pintaItem = document.createElement("div");
             pintaItem.innerHTML = data[i].pinta_name;
+            pintaItem.className = "pinta-item";
             
             var pintaImg = document.createElement("img");
             pintaImg.src = data[i].pinta_html;
             pintaImg.className = "pinta-img-link";
+            pintaItem.appendChild(pintaImg);
             
-            $("#pinta-list").append(pintaImg);
+            var pintaUser = document.createElement("a");
+            pintaUser.innerHTML = "test"//data[i].pinta_user;
+            pintaUser.className = "pinta-user";
+            pintaItem.appendChild(pintaUser);
+            
+            // $("#pinta-list").append(pintaImg);
             $("#pinta-list").append(pintaItem);
             // $("#pinta-list").append("<br>");
         }

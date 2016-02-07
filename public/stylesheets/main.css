@@ -1,0 +1,36 @@
+body{
+    margin: 0 auto;
+}
+.btn {
+    background-color: gray;
+    color: black;
+    border-radius: 10px;
+}
+.pintas-collection{
+    /*border: 1px dotted black;*/
+    margin: auto;
+    margin-left: -4px;
+    margin-right: -4px;
+    /*text-align: center;*/
+    display: block;
+}
+.pinta-item {
+    border: 1px dotted black;
+    border-radius: 15px;
+    position: relative;
+    width: 147px;
+    padding: 10px;
+    margin: 4px;
+    display: inline-block;
+}
+.pinta-img-link {
+    border-radius: 15px;
+    width: 125px;
+    height: 125px;
+}
+
+.pinta-user {
+    /*position: absolute;*/
+    top: 140px;
+    left: 4px;
+}
