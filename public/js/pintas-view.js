@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 function viewAllPintas() {
     var $grid = $('.grid').masonry({
-      columnWidth: 160,
+      columnWidth: 168,
       itemSelector: '.grid-item'
     });
     var promise = promiseAllPintas();
@@ -13,7 +13,7 @@ function viewAllPintas() {
         for (var i = 0; i < data.length; i++) {
             console.log(data[i]);
             var pintaItem = document.createElement("div");
-            // pintaItem.innerHTML = data[i].pinta_name;
+            pintaItem.innerHTML = data[i].pinta_name;
             // pintaItem.className = "pinta-item";
             pintaItem.className = "grid-item";
             
@@ -26,34 +26,49 @@ function viewAllPintas() {
             console.log("test: " + imgDimension);
             
             switch(true){
-                case (imgDimension > 0) && (imgDimension <= 0.65):
+                case (imgDimension > 0) && (imgDimension <= 0.60):
                     console.log("test: One");
                     pintaItem.className = "";
                     pintaItem.className = "grid-item grid-item--height4";
                     pintaImg.className = "pinta-img-link pinta-img-link--3";
                     break;
-                case (imgDimension > 0.65) && (imgDimension <= 0.78):
+                case (imgDimension > 0.60) && (imgDimension <= 0.73):
                     pintaItem.className = "";
                     pintaItem.className = "grid-item grid-item--height3";
                     pintaImg.className = "pinta-img-link pinta-img-link--2";
                     break;
-                case (imgDimension > 0.78) && (imgDimension < 1):
+                case (imgDimension > 0.73) && (imgDimension < 1):
                     pintaItem.className = "";
                     pintaItem.className = "grid-item grid-item--height2";
                     pintaImg.className = "pinta-img-link pinta-img-link--1";
                     break;
-                case (imgDimension > 1):
+                case (imgDimension >= 1):
                     pintaItem.className = "";
                     pintaItem.className = "grid-item";
+                    pintaImg.className = "pinta-img-link";
                     break;
                 default:
                     pintaItem.className = "";
                     pintaItem.className = "grid-item";
+                    pintaImg.className = "pinta-img-link";
                     break;
                 
             }
-            
             pintaItem.appendChild(pintaImg);
+            
+            var pintaInfo = document.createElement("div");
+            pintaInfo.className = "pinta-info";
+            var pintaUserName = document.createElement("a");
+            pintaUserName.className = "pinta-user";
+            var pintaLikeCount = document.createElement("div");
+            pintaLikeCount.className = "pinta-likes";
+            
+            pintaUserName.innerHTML = "Test" //data[i].pinta_user;
+            pintaLikeCount.innerHTML = data[i].pinta_likes;
+            pintaInfo.appendChild(pintaUserName);
+            pintaInfo.appendChild(pintaLikeCount);
+            
+            pintaItem.appendChild(pintaInfo);
             
             $(".grid").append(pintaItem);
             var $elems = pintaItem;

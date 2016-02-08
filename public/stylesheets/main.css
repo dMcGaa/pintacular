@@ -28,30 +28,39 @@ body{
     display: inline-block;
 }
 .pinta-img-link {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 4px;
     border-radius: 15px;
     width: 125px;
+    height: 125px;
 }
 .pinta-img-link--1 {
-    height: 175px;
+    height: 215px;
 }
 .pinta-img-link--2 {
-    height: 225px;
+    height: 305px;
 }
 .pinta-img-link--3 {
-    height: 275px;
+    height: 395px;
 }
-
+.pinta-img-link--wide {
+    width: 250px;
+}
+.pinta-info {
+    position: absolute;
+    left: 10px;
+    bottom: 0px;
+}
 .pinta-user {
-    left: 4px;
+    display: inline;
+    width: 100px;
 }
-
 .pinta-likes {
-    
+    display: inline;
+    right: 0px;
 }
 
 .grid {
+    /*border: 1px dotted black;*/
     /*background: #EEE;*/
     /*max-width: 1200px;*/
 }
@@ -67,16 +76,18 @@ body{
     width: 160px;
     height: 180px;
     float: left;
+    margin: 1px;
     background: #2b3e50;
     border: 2px solid #333;
     border-color: hsla(0, 0%, 0%, 0.5);
     border-radius: 5px;
+    text-align: center;
 }
 
 .grid-item--width2 { width: 320px; }
 .grid-item--width3 { width: 480px; }
 .grid-item--width4 { width: 640px; }
 
-.grid-item--height2 { height: 200px; }
-.grid-item--height3 { height: 260px; }
-.grid-item--height4 { height: 360px; }
+.grid-item--height2 { height: 270px; }
+.grid-item--height3 { height: 360px; }
+.grid-item--height4 { height: 450px; }
