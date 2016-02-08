@@ -13,24 +13,70 @@ body{
     margin-right: -4px;
     /*text-align: center;*/
     display: block;
+    
 }
 .pinta-item {
+    vertical-align: text-top;
     border: 1px dotted black;
     border-radius: 15px;
     position: relative;
     width: 147px;
     padding: 10px;
+    padding-bottom: 4px;
+    padding-top: 4px;
     margin: 4px;
     display: inline-block;
 }
 .pinta-img-link {
+    margin-left: 10px;
+    margin-right: 10px;
     border-radius: 15px;
     width: 125px;
-    height: 125px;
+}
+.pinta-img-link--1 {
+    height: 175px;
+}
+.pinta-img-link--2 {
+    height: 225px;
+}
+.pinta-img-link--3 {
+    height: 275px;
 }
 
 .pinta-user {
-    /*position: absolute;*/
-    top: 140px;
     left: 4px;
 }
+
+.pinta-likes {
+    
+}
+
+.grid {
+    /*background: #EEE;*/
+    /*max-width: 1200px;*/
+}
+
+/*clearfix */
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.grid-item {
+    width: 160px;
+    height: 180px;
+    float: left;
+    background: #2b3e50;
+    border: 2px solid #333;
+    border-color: hsla(0, 0%, 0%, 0.5);
+    border-radius: 5px;
+}
+
+.grid-item--width2 { width: 320px; }
+.grid-item--width3 { width: 480px; }
+.grid-item--width4 { width: 640px; }
+
+.grid-item--height2 { height: 200px; }
+.grid-item--height3 { height: 260px; }
+.grid-item--height4 { height: 360px; }

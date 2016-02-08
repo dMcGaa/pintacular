@@ -3,6 +3,8 @@
 
 <head>
     <% include partials/head.ejs %>
+    <script src="/js/imagesloaded.pkgd.min.js"></script>
+    <script src="/js/masonry.pkgd.min.js"></script>
     <script src="/js/pintas-view.js"></script>
 </head>
 
@@ -15,12 +17,13 @@
 
     <div class="container">
         <div class="jumbotron">
-            <h1 style="font-size: 210%;">Pintacular</h1>
-            <h3><a href = "/connect/twitter">Twitter Oauth</a></h3>
+            <!--<h1 style="font-size: 210%;">Pintacular</h1>-->
+            <!--<h3><a href = "/connect/twitter">Twitter Oauth</a></h3>-->
             <h3><a href = "/new-pinta">Add New</a></h3>
-            <h3><a href = "/view-pintas">View</a></h3>
-            <h3><a href = "/view-pintas-latest">View Latest</a></h3>
-            <div id = "pinta-list" class="pintas-collection"></div>
+            <!--<h3><a href = "/view-pintas">View</a></h3>-->
+            <!--<h3><a href = "/view-pintas-latest">View Latest</a></h3>-->
+            <!--<div id = "pinta-list" class="pintas-collection"></div>-->
+            <div id = "pinta-list" class="grid"></div>
         </div>
     </div>
 
