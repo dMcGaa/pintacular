@@ -1,9 +1,5 @@
 $(document).ready(function() {
-    var $grid = $('.grid').masonry({
-      columnWidth: 168,
-      itemSelector: '.grid-item'
-    });
-    viewAllPintas($grid);
+    viewAllPintas();
 })
 
 function viewAllPintas($grid) {
@@ -76,9 +72,15 @@ function viewAllPintas($grid) {
             pintaItem.appendChild(pintaInfo);
             
             $(".grid").append(pintaItem);
-            var $elems = pintaItem;
-            $grid.append( $elems ).masonry( 'appended', $elems );
+            // var $elems = pintaItem;
+            // $grid.append( $elems ).masonry( 'appended', $elems );
         }
+        var $grid = $('.grid').imagesLoaded( function() {
+          // init Masonry after all images have loaded
+          $grid.masonry({
+            // options...
+          });
+        });
     })
 
 }
