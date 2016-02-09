@@ -1,12 +1,12 @@
 $(document).ready(function() {
-    viewAllPintas();
-})
-
-function viewAllPintas() {
     var $grid = $('.grid').masonry({
       columnWidth: 168,
       itemSelector: '.grid-item'
     });
+    viewAllPintas($grid);
+})
+
+function viewAllPintas($grid) {
     var promise = promiseAllPintas();
     promise.success(function(data) {
         $("#pinta-list").html("");
@@ -25,39 +25,40 @@ function viewAllPintas() {
             console.log(pintaImg.width + " " + pintaImg.height);
             console.log("test: " + imgDimension);
             
-            switch(true){
-                case (imgDimension > 0) && (imgDimension <= 0.60):
-                    console.log("test: One");
-                    pintaItem.className = "";
-                    pintaItem.className = "grid-item grid-item--height4";
-                    pintaImg.className = "pinta-img-link pinta-img-link--3";
-                    break;
-                case (imgDimension > 0.60) && (imgDimension <= 0.73):
-                    pintaItem.className = "";
-                    pintaItem.className = "grid-item grid-item--height3";
-                    pintaImg.className = "pinta-img-link pinta-img-link--2";
-                    break;
-                case (imgDimension > 0.73) && (imgDimension < 1):
-                    pintaItem.className = "";
-                    pintaItem.className = "grid-item grid-item--height2";
-                    pintaImg.className = "pinta-img-link pinta-img-link--1";
-                    break;
-                case (imgDimension >= 1):
-                    pintaItem.className = "";
-                    pintaItem.className = "grid-item";
-                    pintaImg.className = "pinta-img-link";
-                    break;
-                default:
-                    pintaItem.className = "";
-                    pintaItem.className = "grid-item";
-                    pintaImg.className = "pinta-img-link";
-                    break;
+            // switch(true){
+            //     case (imgDimension > 0) && (imgDimension <= 0.60):
+            //         console.log("test: One");
+            //         pintaItem.className = "";
+            //         pintaItem.className = "grid-item grid-item--height4";
+            //         pintaImg.className = "pinta-img-link pinta-img-link--3";
+            //         break;
+            //     case (imgDimension > 0.60) && (imgDimension <= 0.73):
+            //         pintaItem.className = "";
+            //         pintaItem.className = "grid-item grid-item--height3";
+            //         pintaImg.className = "pinta-img-link pinta-img-link--2";
+            //         break;
+            //     case (imgDimension > 0.73) && (imgDimension < 1):
+            //         pintaItem.className = "";
+            //         pintaItem.className = "grid-item grid-item--height2";
+            //         pintaImg.className = "pinta-img-link pinta-img-link--1";
+            //         break;
+            //     case (imgDimension >= 1):
+            //         pintaItem.className = "";
+            //         pintaItem.className = "grid-item";
+            //         pintaImg.className = "pinta-img-link";
+            //         break;
+            //     default:
+            //         pintaItem.className = "";
+            //         pintaItem.className = "grid-item";
+            //         pintaImg.className = "pinta-img-link";
+            //         break;
                 
-            }
+            // }
             pintaItem.appendChild(pintaImg);
             
             var pintaInfo = document.createElement("div");
             pintaInfo.className = "pinta-info";
+            // pintaInfo.innerHTML = "&nbsp;"; //some non-visible content to keep div inside container
             var pintaUserName = document.createElement("a");
             pintaUserName.className = "pinta-user";
             var pintaLikeCount = document.createElement("div");

@@ -31,7 +31,7 @@ body{
     margin: 4px;
     border-radius: 15px;
     width: 125px;
-    height: 125px;
+    /*height: 125px;*/
 }
 .pinta-img-link--1 {
     height: 215px;
@@ -46,6 +46,8 @@ body{
     width: 250px;
 }
 .pinta-info {
+    display: block;
+    height: 24px;
     /*position: absolute;*/
     /*border: 1px solid black;*/
 }
@@ -79,7 +81,7 @@ body{
 
 .grid-item {
     width: 160px;
-    height: 180px;
+    /*height: 180px;*/
     float: left;
     margin: 1px;
     background: #2b3e50;
