@@ -62,9 +62,13 @@ function viewAllPintas() {
             pintaUserName.className = "pinta-user";
             var pintaLikeCount = document.createElement("div");
             pintaLikeCount.className = "pinta-likes";
+            pintaLikeCount.innerHTML = data[i].pinta_likes;
+            var pintaLikeButton = document.createElement("i");
+            pintaLikeButton.className = "fa fa-star-o";
+            pintaLikeButton.style.paddingLeft = "4px";
+            pintaLikeCount.appendChild(pintaLikeButton);
             
             pintaUserName.innerHTML = "Test" //data[i].pinta_user;
-            pintaLikeCount.innerHTML = data[i].pinta_likes;
             pintaInfo.appendChild(pintaUserName);
             pintaInfo.appendChild(pintaLikeCount);
             

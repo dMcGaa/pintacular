@@ -46,17 +46,22 @@ body{
     width: 250px;
 }
 .pinta-info {
-    position: absolute;
-    left: 10px;
-    bottom: 0px;
+    /*position: absolute;*/
+    /*border: 1px solid black;*/
 }
 .pinta-user {
+    /*border: 1px solid black;*/
+    position: absolute;
+    text-align: left;
     display: inline;
+    left: 10px;
     width: 100px;
 }
 .pinta-likes {
+    position: absolute;
+    text-align: right;
     display: inline;
-    right: 0px;
+    right: 10px;
 }
 
 .grid {
