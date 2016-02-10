@@ -105,7 +105,7 @@ app.get('/view-pintas-latest', function (req, res) {
 
 app.get('/handle_twitter_callback', function (req, res) {
   console.log(req.query);
-  res.render('pages/login');
+  res.render('pages/home', {userName: req.query.raw.screen_name});
   // res.send(JSON.stringify(req.query, null, 2));
 })
 
