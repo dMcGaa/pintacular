@@ -105,8 +105,8 @@ app.get('/view-pintas-latest', function (req, res) {
 
 app.get('/handle_twitter_callback', function (req, res) {
   console.log(req.query);
+  res.cookie('userName', req.query.raw.screen_name, { expires: new Date(Date.now() + 900000), httpOnly: false });
   res.render('pages/home', {userName: req.query.raw.screen_name});
-  // res.send(JSON.stringify(req.query, null, 2));
 })
 
 app.listen(app.get('port'), function() {

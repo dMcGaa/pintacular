@@ -7,7 +7,7 @@
 
 <title>Pintacular - Home</title>
 
-<body>
+<body onload="setCookie()">
     <header>
         <% include partials/header.ejs %>
     </header>
@@ -21,6 +21,13 @@
     <footer>
         <% include partials/footer.ejs %>
     </footer>
+    
+    <script>
+    var userName = <%=userName%>;
+    function setCookie() {
+        alert("Cookie is set: " + JSON.stringify(document.cookie));
+    }
+    </script>
 
 </body>
 
