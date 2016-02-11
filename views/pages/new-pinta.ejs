@@ -10,24 +10,27 @@
 <body>
     <header>
         <% include partials/header.ejs %>
+        <script src="/js/pinta-new-posting.js"></script>
     </header>
 
     <div class="container">
         <div class="jumbotron">
             <form id="pinta-new" method="post" action="/pinta-new-add">
                 <input type="text" name="userName" id="formUserName" style="display:none;">
+                <input type="text" name="imgSize" id="imgSize" style="display:none;">
                 Name:
                 <br>
-                <input type="text" name="pName" placeholder="Post Title" autofocus>
-                <br> HTML:
+                <input type="text" name="pName" placeholder="Title" autofocus required>
+                <br> Image URL:
                 <br>
                 <div id="pinta-options">
-                    <input type="text" name="pHtml" placeholder="Image HTML">
+                    <input type="text" id="img-url" name="pHtml" placeholder="Image URL" required>
                     <br>
                 </div>
                 <input type="submit" style="color:black;" value="Submit">
                 <br>
             </form>
+            <img id="img-preview" src="/images/placeholder-400x400.png" alt="Image Preview" class="new-pinta-img-preview">
         </div>
     </div>
 
