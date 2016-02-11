@@ -12,6 +12,6 @@ $(document).ready(function() {
         // });
     });
     $( "#img-preview" ).load(function() {
-        alert("Dimensions: " + this.width + " " + this.height);
+        // alert("Dimensions: " + this.width + " " + this.height);
     });
 })
