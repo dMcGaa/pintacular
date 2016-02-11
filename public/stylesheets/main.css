@@ -67,7 +67,7 @@ body{
 }
 
 .new-pinta-img-preview {
-    border: 1px dashed gray;
+    /*border: 1px dashed gray;*/
     width: 320px;
 }
 

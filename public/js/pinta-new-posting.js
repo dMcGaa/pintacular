@@ -11,4 +11,7 @@ $(document).ready(function() {
         //     $(this).fadeIn(400);
         // });
     });
+    $( "#img-preview" ).load(function() {
+        alert("Dimensions: " + this.width + " " + this.height);
+    });
 })

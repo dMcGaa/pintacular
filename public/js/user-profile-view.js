@@ -33,11 +33,10 @@ function getItemElement(data) {
     pintaItem.className = 'grid-item ';
     pintaItem.innerHTML = data.pinta_name;
     
-    var imgLoad = $("<img />");
-    imgLoad.attr("src", data.pinta_html);
-    imgLoad.unbind("load");
-    imgLoad.bind("load", function () {
-        // alert(this.width + "," + this.height);
-    });
+    var pintaImg = document.createElement("img");
+    pintaImg.src = data.pinta_html;
+    pintaImg.className = "pinta-img-link";
+    pintaItem.appendChild(pintaImg);
+    
     return pintaItem;
 }
