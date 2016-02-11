@@ -56,6 +56,8 @@ function viewAllPintas($grid) {
             pintaInfo.className = "pinta-info";
             // pintaInfo.innerHTML = "&nbsp;"; //some non-visible content to keep div inside container
             var pintaUserName = document.createElement("a");
+            pintaUserName.innerHTML = data[i].pinta_user;
+            pintaUserName.href = "/userProfileView/"+data[i].pinta_user;
             pintaUserName.className = "pinta-user";
             var pintaLikeCount = document.createElement("div");
             pintaLikeCount.className = "pinta-likes";
@@ -65,7 +67,6 @@ function viewAllPintas($grid) {
             pintaLikeButton.style.paddingLeft = "4px";
             pintaLikeCount.appendChild(pintaLikeButton);
             
-            pintaUserName.innerHTML = data[i].pinta_user;
             pintaInfo.appendChild(pintaUserName);
             pintaInfo.appendChild(pintaLikeCount);
             

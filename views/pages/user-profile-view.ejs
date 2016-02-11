@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partials/head.ejs %>
+    <script src="/js/user-profile-view.js"></script>
+</head>
+
+<title>Pintacular <%=requestedUser%></title>
+
+<body>
+    <header>
+        <% include partials/header.ejs %>
+    </header>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h3><%=requestedUser%></h3>
+            <ul id="pinta-list"></ul>
+        </div>
+    </div>
+    
+    <script>
+      var foundPintas = <%-JSON.stringify(foundPintas)%>;
+      console.log(foundPintas);
+    </script>
+
+    <footer>
+        <% include partials/footer.ejs %>
+    </footer>
+</body>
+
+</html>

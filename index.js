@@ -19,8 +19,8 @@ var bodyParser = require('body-parser');
 var config = {
   "server": {
     "protocol": "http",
-    // "host": "fullstack-basejumps-2016-01-01-dmcgaa.c9users.io" //without port
-    "host": "pintacular.herokuapp.com"
+    "host": "fullstack-basejumps-2016-01-01-dmcgaa.c9users.io" //without port
+    // "host": "pintacular.herokuapp.com"
     //"callback": "/handle_twitter_callback"
   },
   "twitter": {
@@ -103,6 +103,19 @@ app.get('/view-pintas-latest', function (req, res) {
   });
 })
 
+app.get('/userProfileView/:userName', function(request, response, next) {
+  var requestedUser = request.params.userName;
+  console.log(requestedUser);
+  mongoFindUserPintas(requestedUser, function(foundPintas, err) {
+    if (err) throw err;
+    console.log("Found data: " + JSON.stringify(foundPintas));
+    response.render('pages/user-profile-view', {
+      requestedUser: requestedUser,
+      foundPintas: foundPintas
+    });
+  });
+});
+
 app.get('/handle_twitter_callback', function (req, res) {
   console.log(req.query);
   res.cookie('userName', req.query.raw.screen_name, { expires: new Date(Date.now() + 900000), httpOnly: false });
@@ -149,8 +162,8 @@ function mongoFindUserPintas(userName, callback) {
     pinta_user: userName
   }).toArray(function(err, docs) {
     if (err) throw err;
-    console.log(JSON.stringify(docs));
-    callback(); //callback once response is obtained (Asynchronous)
+    // console.log(JSON.stringify(docs));
+    callback(docs); //callback once response is obtained (Asynchronous)
   })
 }
 
