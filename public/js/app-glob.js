@@ -6,9 +6,10 @@ $(document).ready(function() {
         $("#header-logout").css("display", "block");
         $("#header-login").css("display", "none");
         $("#header-signup").css("display", "none");
+        $("#formUserName").val(user);
     }
     $("#header-logout").click(function(){
-        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"; //previous date will cause cookie to delete
+        document.cookie = "userName=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/"; //previous date will cause cookie to delete
         // window.location.href = "index"; //simulate a link click  
     })
     
@@ -26,7 +27,7 @@ function getCookie(cname) {
 }
 
 function checkCookie() {
-    var user = getCookie("username");
+    var user = getCookie("userName");
     if (user != "") {
         return user;
         // alert("Welcome again " + user);

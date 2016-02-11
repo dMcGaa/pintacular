@@ -65,7 +65,7 @@ function viewAllPintas($grid) {
             pintaLikeButton.style.paddingLeft = "4px";
             pintaLikeCount.appendChild(pintaLikeButton);
             
-            pintaUserName.innerHTML = "Test" //data[i].pinta_user;
+            pintaUserName.innerHTML = data[i].pinta_user;
             pintaInfo.appendChild(pintaUserName);
             pintaInfo.appendChild(pintaLikeCount);
             
