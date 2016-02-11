@@ -19,8 +19,8 @@ var bodyParser = require('body-parser');
 var config = {
   "server": {
     "protocol": "http",
-    "host": "fullstack-basejumps-2016-01-01-dmcgaa.c9users.io" //without port
-    // "host": "pintacular.herokuapp.com"
+    // "host": "fullstack-basejumps-2016-01-01-dmcgaa.c9users.io" //without port
+    "host": "pintacular.herokuapp.com"
     //"callback": "/handle_twitter_callback"
   },
   "twitter": {

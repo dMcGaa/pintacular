@@ -7,7 +7,7 @@ function viewAllPintas($grid) {
     promise.success(function(data) {
         $("#pinta-list").html("");
         for (var i = 0; i < data.length; i++) {
-            console.log(data[i]);
+            // console.log(data[i]);
             var pintaItem = document.createElement("div");
             pintaItem.innerHTML = data[i].pinta_name;
             // pintaItem.className = "pinta-item";
@@ -18,8 +18,8 @@ function viewAllPintas($grid) {
             pintaImg.className = "pinta-img-link";
             
             var imgDimension = pintaImg.width / pintaImg.height;
-            console.log(pintaImg.width + " " + pintaImg.height);
-            console.log("test: " + imgDimension);
+            // console.log(pintaImg.width + " " + pintaImg.height);
+            // console.log("test: " + imgDimension);
             
             // switch(true){
             //     case (imgDimension > 0) && (imgDimension <= 0.60):
