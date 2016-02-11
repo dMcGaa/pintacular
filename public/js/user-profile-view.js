@@ -41,8 +41,14 @@ function getItemElement(data) {
     var pintaInfo = document.createElement("div");
     pintaInfo.className = "pinta-info";
     var pintaUserName = document.createElement("a");
-    pintaUserName.innerHTML = data.pinta_user;
-    pintaUserName.href = "/userProfileView/"+data.pinta_user;
+    if(checkCookie() === data.pinta_user){
+        pintaUserName.innerHTML = "delete";
+        pintaUserName.href = "/deletePosting/"+data._id;
+    }
+    else{
+        pintaUserName.innerHTML = "";
+        pintaUserName.href = "/userProfileView/"+data.pinta_user;
+    }
     pintaUserName.className = "pinta-user";
     var pintaLikeCount = document.createElement("div");
     pintaLikeCount.className = "pinta-likes";

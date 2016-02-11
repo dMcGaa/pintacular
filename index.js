@@ -116,6 +116,17 @@ app.get('/userProfileView/:userName', function(request, response, next) {
   });
 });
 
+app.get('/deletePosting/:pollId', function(request, response, next) {
+  var pollId = request.params.pollId;
+  console.log(pollId);
+  mongoRemoveOnePinta(pollId, function(err) {
+    if (err) throw err;
+    console.log("Removed");
+    response.render('pages/index');
+  });
+});
+
+
 app.get('/handle_twitter_callback', function (req, res) {
   console.log(req.query);
   res.cookie('userName', req.query.raw.screen_name, { expires: new Date(Date.now() + 900000), httpOnly: false });
@@ -193,4 +204,16 @@ function mongoFindLatestPintas(findNum, callback) {
     console.log(JSON.stringify(docs));
     callback(docs); //callback once response is obtained (Asynchronous)
   })
+}
+
+function mongoRemoveOnePinta(removeId, callback) {
+  var collection = dbConn.collection(dbCollection);
+  collection.remove({
+    _id: ObjectId(removeId),
+    pinta_name: {
+      $exists: true
+    }
+    // pinta_user: removeObj.userName
+  })
+  callback(); //callback once response is obtained (Asynchronous)
 }

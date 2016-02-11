@@ -2,6 +2,7 @@ $(document).ready(function() {
     var user = checkCookie();
     if (user !==""){
         $("#header-user").html(user);
+        $("#header-user").attr("href", "/userProfileView/"+user);
         $("#header-user").css("display", "block");
         $("#header-logout").css("display", "block");
         $("#header-login").css("display", "none");
