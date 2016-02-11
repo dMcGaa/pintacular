@@ -38,5 +38,24 @@ function getItemElement(data) {
     pintaImg.className = "pinta-img-link";
     pintaItem.appendChild(pintaImg);
     
+    var pintaInfo = document.createElement("div");
+    pintaInfo.className = "pinta-info";
+    var pintaUserName = document.createElement("a");
+    pintaUserName.innerHTML = data.pinta_user;
+    pintaUserName.href = "/userProfileView/"+data.pinta_user;
+    pintaUserName.className = "pinta-user";
+    var pintaLikeCount = document.createElement("div");
+    pintaLikeCount.className = "pinta-likes";
+    pintaLikeCount.innerHTML = data.pinta_likes;
+    var pintaLikeButton = document.createElement("i");
+    pintaLikeButton.className = "fa fa-star-o";
+    pintaLikeButton.style.paddingLeft = "4px";
+    pintaLikeCount.appendChild(pintaLikeButton);
+    
+    pintaInfo.appendChild(pintaUserName);
+    pintaInfo.appendChild(pintaLikeCount);
+    
+    pintaItem.appendChild(pintaInfo);
+    
     return pintaItem;
 }
