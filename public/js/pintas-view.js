@@ -9,12 +9,15 @@ function viewAllPintas($grid) {
     });
     var promise = promiseAllPintas();
     promise.success(function(data) {
-        // $("#pinta-list").html("");
-        for (var i = 0; i < data.length; i++) {
-                var elems = [getItemElement(data[i])];
+        for(var i = 0; i<data.length; i++)
+        {
+            getItemElement(data[i], function(elem){
+                var elems = [elem];
                 var $elems = $( elems );
                 $grid.append( $elems ).masonry( 'appended', $elems );
-            }
+                
+            })
+        }
     })
 
 }
@@ -26,7 +29,7 @@ function promiseAllPintas() {
     });
 }
 
-function getItemElement(data) {
+function getItemElement(data, callback) {
     var pintaItem = document.createElement('div');
     pintaItem.className = 'grid-item ';
     pintaItem.innerHTML = data.pinta_name;
@@ -55,5 +58,7 @@ function getItemElement(data) {
     
     pintaItem.appendChild(pintaInfo);
     
-    return pintaItem;
+    pintaImg.onload = function(){
+        callback(pintaItem);
+    }
 }
