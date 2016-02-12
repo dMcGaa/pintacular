@@ -76,7 +76,7 @@ app.post("/pinta-new-add", function(req, res) {
 app.post("/pintas-recent-get", function(req, res) {
   console.log("retrieving...");
   // var reqPoll = req.body.pollNumber;
-  mongoFindLatestPintas(12, function(foundPintas) {
+  mongoFindLatestPintas(25, function(foundPintas) {
     res.send(foundPintas);
   });
 })
