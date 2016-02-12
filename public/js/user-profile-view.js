@@ -8,9 +8,12 @@ $(document).ready(function() {
     
     for(var i = 0; i<foundPintas.length; i++)
     {
-        var elems = [getItemElement(foundPintas[i])];
-        var $elems = $( elems );
-        $grid.append( $elems ).masonry( 'appended', $elems );
+        getItemElement(foundPintas[i], function(elem){
+            var elems = [elem];
+            var $elems = $( elems );
+            $grid.append( $elems ).masonry( 'appended', $elems );
+            
+        })
     }
     
 })
@@ -28,12 +31,13 @@ function addPostsToDom(data) {
     }
 }
 
-function getItemElement(data) {
+function getItemElement(data, callback) {
     var pintaItem = document.createElement('div');
     pintaItem.className = 'grid-item ';
     pintaItem.innerHTML = data.pinta_name;
     
-    var pintaImg = document.createElement("img");
+    // var pintaImg = document.createElement("img");
+    var pintaImg = new Image();
     pintaImg.src = data.pinta_html;
     pintaImg.className = "pinta-img-link";
     pintaItem.appendChild(pintaImg);
@@ -63,5 +67,8 @@ function getItemElement(data) {
     
     pintaItem.appendChild(pintaInfo);
     
-    return pintaItem;
+    // return pintaItem;
+    pintaImg.onload = function(){
+        callback(pintaItem);
+    }
 }
