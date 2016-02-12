@@ -1,7 +1,7 @@
 # Pintacular (pinterest clone).
 Create a wall of interesting items.
 
-[Impetus](http://www.freecodecamp.com/challenges/build-a-pinterest-clone)
+[Demo](https://pintacular.herokuapp.com/)
 
 ## User Stories:
 1. User Story: As an unauthenticated user, I can login with Twitter.
