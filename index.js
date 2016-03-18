@@ -19,8 +19,8 @@ var bodyParser = require('body-parser');
 var config = {
   "server": {
     "protocol": "http",
-    // "host": "free-code-camp-dmcgaa.c9users.io" //locally, (without port)
-    "host": "pintacular.herokuapp.com"
+    "host": "free-code-camp-dmcgaa.c9users.io" //locally, (without port)
+    // "host": "pintacular.herokuapp.com"
     //"callback": "/handle_twitter_callback"
   },
   "twitter": {

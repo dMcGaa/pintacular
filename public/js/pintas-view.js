@@ -29,6 +29,18 @@ function promiseAllPintas() {
     });
 }
 
+function urlExists(testUrl, callback) {
+    var http = jQuery.ajax({
+        // type:"HEAD",
+        url: testUrl,
+        // timeout: 1000,
+        complete: function(xhr, status){
+            callback (status);
+        }
+    })
+    // callback (http.status);
+}
+
 function getItemElement(data, callback) {
     var pintaItem = document.createElement('div');
     pintaItem.className = 'grid-item ';
@@ -38,7 +50,21 @@ function getItemElement(data, callback) {
     pintaImg.src = data.pinta_html;
     pintaImg.className = "pinta-img-link";
     pintaItem.appendChild(pintaImg);
-    
+    // var tempUrl = data.pinta_html;
+    // tempUrl = tempUrl.replace(/.*?:\/\//g, "https://");
+    // urlExists(tempUrl, function(status){
+    //     console.log(tempUrl + " " + status);
+    //     if(status == 'success'){
+    //         pintaImg.src = tempUrl;
+    //     }
+    //     else{
+    //         pintaImg.src = "/images/placeholder-400x400.png";
+    //     }
+    //     pintaImg.className = "pinta-img-link";
+    //     pintaItem.appendChild(pintaImg);
+        
+    // })
+
     var pintaInfo = document.createElement("div");
     pintaInfo.className = "pinta-info";
     var pintaUserName = document.createElement("a");
@@ -59,6 +85,10 @@ function getItemElement(data, callback) {
     pintaItem.appendChild(pintaInfo);
     
     pintaImg.onload = function(){
+        callback(pintaItem);
+    }
+    pintaImg.onerror = function(){
+        pintaImg.src = "/images/placeholder-400x400.png";
         callback(pintaItem);
     }
 }
