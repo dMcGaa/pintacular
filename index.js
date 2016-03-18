@@ -19,7 +19,7 @@ var bodyParser = require('body-parser');
 var config = {
   "server": {
     "protocol": "http",
-    // "host": "fullstack-basejumps-2016-01-01-dmcgaa.c9users.io" //without port
+    // "host": "free-code-camp-dmcgaa.c9users.io" //locally, (without port)
     "host": "pintacular.herokuapp.com"
     //"callback": "/handle_twitter_callback"
   },
