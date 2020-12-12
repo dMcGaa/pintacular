@@ -8,10 +8,11 @@ var MongoClient = require('mongodb').MongoClient,
 var ObjectId = require('mongodb').ObjectId;
 var userName = process.env.MONGO_USER || "null";
 var userPw = process.env.MONGO_PW || "null";
+var mgPfx = process.env.MONGO_PREFIX || "null";
 var mgConn = process.env.MONGO_CONNECTION || "null";
 var mgDB = process.env.MONGO_DB || "null";
 var mgQuery = process.env.MONGO_QUERY || "null";
-var dbUrl = 'mongodb+srv://' + userName + ":" + userPw + "@" + mgConn + "/" + mgDB + mgQuery;
+var dbUrl = mgPfx + userName + ":" + userPw + "@" + mgConn + "/" + mgDB + mgQuery;
 var dbCollection = "pintacular";
 
 var session = require('express-session')
